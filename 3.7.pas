@@ -1,24 +1,34 @@
-﻿program Polyclinica;
+﻿program Tickets;
+
 var
-  i, code: integer;
   surgeon, neurologist, therapist: integer;
+  code: integer;
+  i: integer;
+
 begin
   surgeon := 0;
   neurologist := 0;
   therapist := 0;
 
   writeln('Введите коды специалистов (1 - хирург, 2 - невропатолог, 3 - терапевт):');
-  for i := 1 to 12 do
-  begin
+
+  i := 0;
+  repeat
     readln(code);
-    case code of
-      1: surgeon := surgeon + 1;
-      2: neurologist := neurologist + 1;
-      3: therapist := therapist + 1;
+
+    if code = 1 then
+      surgeon := surgeon + 1
+    else if code = 2 then
+      neurologist := neurologist + 1
+    else if code = 3 then
+      therapist := therapist + 1
     else
       writeln('Ошибка: недопустимый код ', code);
-    end;
-  end;
+
+    i := i + 1;
+
+  until i >= 12;  { условие выхода }
+
   writeln('Количество талонов:');
   writeln('Хирург: ', surgeon);
   writeln('Невропатолог: ', neurologist);
